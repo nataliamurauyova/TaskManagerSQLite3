@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../TaskManagerUsingSQLite/EditInfoViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../TaskManagerUsingSQLite/EditInfoViewController.m">
+   </FileRef>
+   <Group
+      location = "group:.."
+      name = "..">
+      <Group
+         location = "group:TaskManagerUsingSQLite"
+         name = "TaskManagerUsingSQLite">
+         <FileRef
+            location = "group:AppDelegate.h">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.m">
+         </FileRef>
+         <Group
+            location = "group:Assets.xcassets"
+            name = "Assets.xcassets">
+            <Group
+               location = "group:AppIcon.appiconset"
+               name = "AppIcon.appiconset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Base.lproj"
+            name = "Base.lproj">
+            <FileRef
+               location = "group:LaunchScreen.storyboard">
+            </FileRef>
+            <FileRef
+               location = "group:Main.storyboard">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:DBManager.h">
+         </FileRef>
+         <FileRef
+            location = "group:DBManager.m">
+         </FileRef>
+         <FileRef
+            location = "group:EditInfoViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:EditInfoViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:EditViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:EditViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+         <FileRef
+            location = "group:main.m">
+         </FileRef>
+         <FileRef
+            location = "group:ViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:ViewController.m">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:TaskManagerUsingSQLite.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:../TaskManagerUsingSQLite/EditViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../TaskManagerUsingSQLite/EditViewController.m">
+   </FileRef>
+   <FileRef
+      location = "group:databaseForTaskManager.sql">
+   </FileRef>
+   <FileRef
+      location = "self:">
+   </FileRef>
+</Workspace>
