@@ -63,6 +63,8 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"idCellRecord" forIndexPath:indexPath];
     
+    [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+    
     NSInteger taskNameIndex = [self.dbManager.arrColumnNames indexOfObject:@"taskName"];
     NSInteger taskDescriptionIndex = [self.dbManager.arrColumnNames indexOfObject:@"taskDescription"];
     NSInteger deadlineIndex = [self.dbManager.arrColumnNames indexOfObject:@"deadline"];
@@ -90,7 +92,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     EditViewController *editVC = [segue destinationViewController];
     editVC.delegate = self;
-    
     editVC.recordIDToEdit = self.recordIDToEdit;
 }
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
