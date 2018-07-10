@@ -17,6 +17,17 @@
 
 @implementation EditViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    NSString *value = [[NSUserDefaults standardUserDefaults] stringForKey:@"stateOfSwitch"];
+    if([value compare:@"on"] == NSOrderedSame){
+        _mySwitch.on = YES;
+    } else{
+        _mySwitch.on = NO;
+    }
+    
+    }
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -33,6 +44,7 @@
     }
     
     
+    
 }
 
 - (IBAction)saveInfo:(id)sender {
@@ -45,12 +57,37 @@
     [self.dbManager executeQuery:query];
     if(self.dbManager.affectedRows !=0){
         NSLog(@"Query executed successfully. Affected rows = %d",self.dbManager.affectedRows);
-        [self.delegate editingInfoWasFinished];
+        [self.delegate editingInfoWasFinished:self.mySwitch.isOn];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         NSLog(@"Problems with executing the query");
     }
 }
+
+- (IBAction)switchChanged:(id)sender {
+    NSString *onValue = @"on";
+    NSUserDefaults *userpref = [NSUserDefaults standardUserDefaults];
+    if (![self.mySwitch isOn]){
+        onValue = @"off";
+        [userpref setObject:onValue forKey:@"stateOfSwitch"];
+    }
+    [userpref setObject:onValue forKey:@"stateOfSwitch"];
+
+}
+-(BOOL) checkSwitch{
+    BOOL flag = NO;
+    if ([self.mySwitch isOn]){
+        flag = YES;
+    }
+    return flag;
+}
+//-(NSString*) checkingSwitch{
+//    NSString *flag = @"Undone";
+//    if ([self.mySwitch isOn]){
+//        flag = @"Done";
+//    }
+//    return flag;
+//}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
@@ -65,4 +102,8 @@
     self.taskDescription.text = [[results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"taskDescription"]];
     self.deadline.text = [[results objectAtIndex:0] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"deadline"]];
 }
+
+
+
+
 @end

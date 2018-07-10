@@ -12,6 +12,7 @@
 @property(strong,nonatomic) DBManager* dbManager;
 @property(strong,nonatomic) NSArray *arrTaskInfo;
 @property(nonatomic) int recordIDToEdit;
+@property(nonatomic, strong) NSString *checkSwitchState;
 
 -(void)loadData;
 @end
@@ -26,7 +27,9 @@
     
     self.dbManager = [[DBManager alloc] initWithFileName:@"taskManager.sql"];
     
-    
+    if(self.checkSwitchState == nil) {
+        self.checkSwitchState = @"";
+    }
     
     [self loadData];
 }
@@ -36,6 +39,7 @@
     
     [self performSegueWithIdentifier:@"idSequeEditInfo" sender:self];
 }
+
 -(void)loadData{
     NSString *query = @"select * from taskInfo";
     
@@ -63,8 +67,8 @@
     NSInteger taskDescriptionIndex = [self.dbManager.arrColumnNames indexOfObject:@"taskDescription"];
     NSInteger deadlineIndex = [self.dbManager.arrColumnNames indexOfObject:@"deadline"];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:taskNameIndex],[[self.arrTaskInfo objectAtIndex:indexPath.row]objectAtIndex:taskDescriptionIndex] ];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Deadline: %@ days", [[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:deadlineIndex]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)  %@",[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:taskNameIndex],[[self.arrTaskInfo objectAtIndex:indexPath.row]objectAtIndex:taskDescriptionIndex], self.checkSwitchState];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Deadline: %@ day(s)", [[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:deadlineIndex]];
     
     return cell;
 }
@@ -72,8 +76,15 @@
     self.recordIDToEdit = [[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
     [self performSegueWithIdentifier:@"idSequeEditInfo" sender:self];
 }
--(void)editingInfoWasFinished{
+
+- (void)editingInfoWasFinished:(BOOL)isSwitchOn {
     [self loadData];
+    if(isSwitchOn) {
+        self.checkSwitchState = @"Done";
+    } else {
+        self.checkSwitchState = @"Undone";
+    }
+    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -90,5 +101,6 @@
         [self loadData];
     }
 }
+
 
 @end
