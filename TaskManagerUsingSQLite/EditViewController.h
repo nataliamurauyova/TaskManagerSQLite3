@@ -10,20 +10,20 @@
 
 @protocol EditViewControllerDelegate
 
--(void)editingInfoWasFinished:(BOOL)isSwitchOn;
+-(void)editingInfoWasFinished;
 @end
 
-@interface EditViewController : UIViewController <UITextFieldDelegate>
+@interface EditViewController : UIViewController <UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *taskName;
 @property (weak, nonatomic) IBOutlet UITextField *taskDescription;
 @property (weak, nonatomic) IBOutlet UITextField *deadline;
-@property (weak, nonatomic) IBOutlet UISwitch *mySwitch;
 @property(strong,nonatomic) id<EditViewControllerDelegate> delegate;
 @property(nonatomic) int recordIDToEdit;
+@property (strong, nonatomic) IBOutlet UITextField *priorityLabel;
+@property (strong, nonatomic) IBOutlet UIPickerView *priorityPicker;
 
 - (IBAction)saveInfo:(id)sender;
-- (IBAction)switchChanged:(id)sender;
--(NSString*) checkingSwitch;
+
 @end
 
 

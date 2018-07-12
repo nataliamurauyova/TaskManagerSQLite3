@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6E4215F520F237BE0060E139 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E4215F420F237BE0060E139 /* EditViewController.m */; };
-		6E960FD820F3754B001AB198 /* taskManager.sql in Resources */ = {isa = PBXBuildFile; fileRef = 6E960FD720F3754B001AB198 /* taskManager.sql */; };
 		6EED1E4120EFED14009932FC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EED1E4020EFED14009932FC /* AppDelegate.m */; };
 		6EED1E4420EFED14009932FC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EED1E4320EFED14009932FC /* ViewController.m */; };
 		6EED1E4720EFED14009932FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EED1E4520EFED14009932FC /* Main.storyboard */; };
@@ -20,12 +19,13 @@
 		6EED1E5B20EFED54009932FC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EED1E5A20EFED54009932FC /* CoreFoundation.framework */; };
 		6EED1E5D20EFED5D009932FC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EED1E5C20EFED5D009932FC /* libsqlite3.tbd */; };
 		6EED1E6020EFEDA6009932FC /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EED1E5F20EFEDA6009932FC /* DBManager.m */; };
+		EA5C869D20F624870096A250 /* taskManager.sql in Resources */ = {isa = PBXBuildFile; fileRef = EA5C869C20F624870096A250 /* taskManager.sql */; };
+		EA6481A920F75752008F5A0B /* DBTaskManager.sql in Resources */ = {isa = PBXBuildFile; fileRef = EA6481A820F75752008F5A0B /* DBTaskManager.sql */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6E4215F320F237BE0060E139 /* EditViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		6E4215F420F237BE0060E139 /* EditViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
-		6E960FD720F3754B001AB198 /* taskManager.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = taskManager.sql; sourceTree = "<group>"; };
 		6EED1E3C20EFED14009932FC /* TaskManagerUsingSQLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskManagerUsingSQLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EED1E3F20EFED14009932FC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6EED1E4020EFED14009932FC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +42,8 @@
 		6EED1E5C20EFED5D009932FC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		6EED1E5E20EFEDA6009932FC /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		6EED1E5F20EFEDA6009932FC /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		EA5C869C20F624870096A250 /* taskManager.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = taskManager.sql; sourceTree = "<group>"; };
+		EA6481A820F75752008F5A0B /* DBTaskManager.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = DBTaskManager.sql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				6EED1E4020EFED14009932FC /* AppDelegate.m */,
 				6EED1E4220EFED14009932FC /* ViewController.h */,
 				6EED1E4320EFED14009932FC /* ViewController.m */,
+				EA5C869C20F624870096A250 /* taskManager.sql */,
 				6EED1E4520EFED14009932FC /* Main.storyboard */,
 				6EED1E4820EFED14009932FC /* Assets.xcassets */,
 				6EED1E4A20EFED14009932FC /* LaunchScreen.storyboard */,
@@ -92,7 +95,7 @@
 				6EED1E5F20EFEDA6009932FC /* DBManager.m */,
 				6E4215F320F237BE0060E139 /* EditViewController.h */,
 				6E4215F420F237BE0060E139 /* EditViewController.m */,
-				6E960FD720F3754B001AB198 /* taskManager.sql */,
+				EA6481A820F75752008F5A0B /* DBTaskManager.sql */,
 			);
 			path = TaskManagerUsingSQLite;
 			sourceTree = "<group>";
@@ -166,10 +169,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5C869D20F624870096A250 /* taskManager.sql in Resources */,
+				EA6481A920F75752008F5A0B /* DBTaskManager.sql in Resources */,
 				6EED1E4C20EFED14009932FC /* LaunchScreen.storyboard in Resources */,
 				6EED1E4920EFED14009932FC /* Assets.xcassets in Resources */,
 				6EED1E4720EFED14009932FC /* Main.storyboard in Resources */,
-				6E960FD820F3754B001AB198 /* taskManager.sql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

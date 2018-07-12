@@ -13,6 +13,8 @@
 @property(strong,nonatomic) NSArray *arrTaskInfo;
 @property(nonatomic) int recordIDToEdit;
 @property(nonatomic, strong) NSString *checkSwitchState;
+@property(strong,nonatomic) NSMutableArray *filteredTasks;
+
 
 -(void)loadData;
 @end
@@ -22,15 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
     self.tableTasks.delegate = self;
     self.tableTasks.dataSource = self;
     
-    self.dbManager = [[DBManager alloc] initWithFileName:@"taskManager.sql"];
-    
-    if(self.checkSwitchState == nil) {
-        self.checkSwitchState = @"";
-    }
-    
+    self.dbManager = [[DBManager alloc] initWithFileName:@"DBTaskManager.sql"];
+
     [self loadData];
 }
 
@@ -55,7 +54,9 @@
     return 1;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
     return self.arrTaskInfo.count;
+    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 60.0;
@@ -65,28 +66,30 @@
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
     
+
     NSInteger taskNameIndex = [self.dbManager.arrColumnNames indexOfObject:@"taskName"];
     NSInteger taskDescriptionIndex = [self.dbManager.arrColumnNames indexOfObject:@"taskDescription"];
     NSInteger deadlineIndex = [self.dbManager.arrColumnNames indexOfObject:@"deadline"];
+    NSInteger priorityIndex = [self.dbManager.arrColumnNames indexOfObject:@"prioriry"];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)  %@",[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:taskNameIndex],[[self.arrTaskInfo objectAtIndex:indexPath.row]objectAtIndex:taskDescriptionIndex], self.checkSwitchState];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Deadline: %@ day(s)", [[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:deadlineIndex]];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@) ",[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:taskNameIndex],[[self.arrTaskInfo objectAtIndex:indexPath.row]objectAtIndex:taskDescriptionIndex] ];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Deadline: %@ day(s) Priority: %@", [[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:deadlineIndex],[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:priorityIndex]] ;
+    
     
     return cell;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Row selected" message:[NSString stringWithFormat:@"You've selected a task %@",[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:1]]  delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 -(void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath{
     self.recordIDToEdit = [[[self.arrTaskInfo objectAtIndex:indexPath.row] objectAtIndex:0] intValue];
     [self performSegueWithIdentifier:@"idSequeEditInfo" sender:self];
 }
 
-- (void)editingInfoWasFinished:(BOOL)isSwitchOn {
+- (void)editingInfoWasFinished {
     [self loadData];
-    if(isSwitchOn) {
-        self.checkSwitchState = @"Done";
-    } else {
-        self.checkSwitchState = @"Undone";
-    }
-    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -102,6 +105,5 @@
         [self loadData];
     }
 }
-
 
 @end

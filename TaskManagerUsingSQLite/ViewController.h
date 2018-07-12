@@ -10,7 +10,7 @@
 #import "DBManager.h"
 #import "EditViewController.h"
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EditViewControllerDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, EditViewControllerDelegate,UISearchBarDelegate>
 @property(weak,nonatomic) IBOutlet UITableView *tableTasks;
 
 -(IBAction)addNewRecord:(id)sender;
